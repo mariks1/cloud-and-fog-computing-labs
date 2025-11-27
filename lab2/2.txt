@@ -1,0 +1,15 @@
+minikube start
+
+kubectl get nodes
+
+minikube image build -t lab1-frontend:v1 .
+kubectl apply -f deployment-frontend.yaml
+kubectl apply -f deployment-redis.yaml
+kubectl apply -f service-frontend.yaml
+kubectl apply -f service-redis.yaml
+
+
+minikube service frontend-service
+
+
+minikube image build -t lab1-frontend:v2 .
