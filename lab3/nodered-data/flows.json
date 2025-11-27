@@ -1,0 +1,105 @@
+[
+    {
+        "id": "19c715cb5fdce6ce",
+        "type": "tab",
+        "label": "Поток 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6d7e067565e1d4a5",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mqtt-broker",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "8ae155073c266ee1",
+        "type": "mqtt in",
+        "z": "19c715cb5fdce6ce",
+        "name": "",
+        "topic": "factory/temperature",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "6d7e067565e1d4a5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 450,
+        "y": 260,
+        "wires": [
+            [
+                "cb02e8868d593701"
+            ]
+        ]
+    },
+    {
+        "id": "7ae6d56092f969bd",
+        "type": "mqtt out",
+        "z": "19c715cb5fdce6ce",
+        "name": "",
+        "topic": "factory/alerts",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "6d7e067565e1d4a5",
+        "x": 830,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "cb02e8868d593701",
+        "type": "switch",
+        "z": "19c715cb5fdce6ce",
+        "name": "",
+        "property": "payload.temperature",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "80",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 650,
+        "y": 260,
+        "wires": [
+            [
+                "7ae6d56092f969bd"
+            ]
+        ]
+    }
+]
